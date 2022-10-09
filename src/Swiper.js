@@ -157,6 +157,7 @@ class Swiper extends React.Component {
   }
 
   _fixState() {
+    console.log('_fixState')
     const { vertical } = this.props;
     const { width, height, activeIndex } = this.state;
     this._animatedValueX = vertical ? 0 : width * activeIndex * (I18nManager.isRTL ? 1 : -1);
