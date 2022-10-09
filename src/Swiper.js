@@ -178,6 +178,7 @@ class Swiper extends React.Component {
 
 
    getClones(slidesToShow, childrenArr) {
+     console.log('getClones start', slidesToShow);
     if (childrenArr.length < slidesToShow) {
       return childrenArr;
     }
@@ -188,6 +189,7 @@ class Swiper extends React.Component {
         ...childrenArr.slice(0, slidesToShow * 2),
       ];
     }
+     console.log('getClones end', [...childrenArr, ...childrenArr, ...childrenArr]);
     return [...childrenArr, ...childrenArr, ...childrenArr];
   }
 
