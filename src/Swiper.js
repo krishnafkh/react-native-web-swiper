@@ -254,6 +254,8 @@ class Swiper extends React.Component {
       Controls = DefaultControls,
     } = this.props;
 
+    console.log('getClones render', this.getActiveIndex());
+
     return (
       <View
         style={StyleSheet.flatten([styles.root, containerStyle])}
