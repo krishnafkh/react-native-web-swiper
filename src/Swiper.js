@@ -238,7 +238,7 @@ class Swiper extends React.Component {
   }
 
   render() {
-    const { pan, x, y, width, height } = this.state;
+    const { pan, x, y, width, height, activeIndex } = this.state;
 
     const {
       theme,
@@ -254,7 +254,9 @@ class Swiper extends React.Component {
       Controls = DefaultControls,
     } = this.props;
 
-    console.log('getClones render', this.getActiveIndex());
+
+    const dataNew = this.getClones(activeIndex, this.children);
+    console.log('getClones render', dataNew, activeIndex);
 
     return (
       <View
@@ -277,7 +279,7 @@ class Swiper extends React.Component {
             ])}
             {...this._panResponder.panHandlers}
           >
-            {this.getClones(this.getActiveIndex(), this.children).map((el, i) => (
+            {dataNew.map((el, i) => (
               <View
                 key={i}
                 style={StyleSheet.flatten([
