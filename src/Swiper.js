@@ -176,6 +176,21 @@ class Swiper extends React.Component {
     this._changeIndex(delta);
   }
 
+
+   getClones(slidesToShow, childrenArr) {
+    if (childrenArr.length < slidesToShow) {
+      return childrenArr;
+    }
+    if (childrenArr.length > slidesToShow * 2) {
+      return [
+        ...childrenArr.slice(childrenArr.length - slidesToShow * 2, childrenArr.length),
+        ...childrenArr,
+        ...childrenArr.slice(0, slidesToShow * 2),
+      ];
+    }
+    return [...childrenArr, ...childrenArr, ...childrenArr];
+  }
+
   _changeIndex(delta = 1) {
     const { loop, vertical } = this.props;
     const { width, height, activeIndex } = this.state;
@@ -258,7 +273,7 @@ class Swiper extends React.Component {
             ])}
             {...this._panResponder.panHandlers}
           >
-            {this.children.map((el, i) => (
+            {this.getClones(this.getActiveIndex(), this.children).map((el, i) => (
               <View
                 key={i}
                 style={StyleSheet.flatten([
