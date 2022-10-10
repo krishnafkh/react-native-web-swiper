@@ -178,7 +178,7 @@ class Swiper extends React.Component {
 
 
    getClones(slidesToShow, childrenArr) {
-     console.log('getClones start', slidesToShow);
+     console.log('getClones start', slidesToShow); // 4, [..4, ]
     if (childrenArr.length < slidesToShow) {
       return childrenArr;
     }
@@ -255,8 +255,6 @@ class Swiper extends React.Component {
     } = this.props;
 
 
-    const dataNew = this.getClones(activeIndex, this.children);
-    console.log('getClones render', dataNew, activeIndex);
 
     return (
       <View
@@ -279,7 +277,7 @@ class Swiper extends React.Component {
             ])}
             {...this._panResponder.panHandlers}
           >
-            {dataNew.map((el, i) => (
+            {this.children.map((el, i) => (
               <View
                 key={i}
                 style={StyleSheet.flatten([
